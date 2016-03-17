@@ -58,6 +58,9 @@ def recurseOrg(type,o,sID)
       recurseOrg(type,oo,o[:systemId])
     end
   end
+  
+  return if o[:naam] == "vice-president"
+  
   o.delete :organisaties
 
   if (o[:functies] and (o[:functies].length > 0))
