@@ -173,6 +173,11 @@ def xOrgs(a)
   return nil if a == 'Free Lance'
   return nil if a =~ /^Tweede Kamerlid/
   
+  a.sub!('V&D (Vroom en Dreesman)','Vroom en Dreesman')
+  a.sub!('V& D (Vroom en Dreesman)','Vroom en Dreesman')
+  a.sub!('V&D','Vroom en Dreesman')
+  a.sub!('V& D','Vroom en Dreesman')
+  
   a.sub!(/^(.*)[ ,(]+belast met.*/) do |m|
     $1
   end
@@ -249,7 +254,10 @@ end
 
 def repairOrgsString(org)
 
+  
+
   if org
+    
     if org.scan(/["]/).count == 1
       org.sub!(/["]/,'')
     end
